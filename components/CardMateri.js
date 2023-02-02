@@ -36,7 +36,7 @@ export default function CardMateri(props){
                     borderBottomColor: '#1313130A',
                     width: '100%',
                     marginTop: 12
-                }}
+            }}
             />
         </TouchableOpacity>
     )

@@ -36,7 +36,10 @@ export default function QuizScreen(){
                     <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Quiz Teks Prosedur</Text>
                     <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 6}} onPress={() => navigation.navigate('Materi')}>Lainnya</Text>
                 </View>
-                <CardQuiz/>
+                <CardQuiz title="Quiz 1 Teks Prosedur" desc="Pengenalan Teks Prosedur" soal="10 Soal" type="Mudah" time="20 Menit"/>
+                <CardQuiz title="Quiz 2 Teks Prosedur" desc="Ciri & Struktur Teks Prosedur" soal="10 Soal" type="Sedang" time="20 Menit"/>
+                <CardQuiz title="Quiz 3 Teks Prosedur" desc="Kebahasaan Teks Prosedur" soal="10 Soal" type="Susah" time="20 Menit"/>
+                <CardQuiz title="Quiz 4 Teks Prosedur" desc="Membuat Teks Prosedur" soal="10 Soal" type="Sedang" time="20 Menit"/>
                {/* materi teks prosedur */}
             </ScrollView>
         </SafeAreaView>
