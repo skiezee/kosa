@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, useColorScheme } from "react-native";
+import { StyleSheet, Text, View, Image, useColorScheme, SafeAreaView, Platform, StatusBar } from "react-native";
 import InputTextAuth from "../components/InputTextAuth";
 import CustomBtnAuth from "../components/ButtonAuth";
 
@@ -14,42 +13,47 @@ export default function RegisterScreen() {
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
-      <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
-        <View style={{ flex: 1, alignItems: "center", marginTop: 64 }}>
-          <Text style={{ color: "#3C3C43", fontWeight: "500", fontSize: 16 }}>
-            {textDaftar}
-          </Text>
-          <Text
-            style={{
-              marginTop: 8,
-              textAlign: "center",
-              maxWidth: 300,
-              color: "#3C3C43",
-              fontSize: 13,
-              fontWeight: "400",
-            }}
-          >
-            {textDesc}
-          </Text>
-          <Image
-            source={require("../assets/signup.png")}
-            style={{ marginTop: 48 }}
-          />
+      <SafeAreaView style={styles.AndroidSafeArea}>
+        <View style={{ flex: 1, alignItems: "center", backgroundColor: "white", margin: 24 }}>
+          <View style={{ flex: 1, alignItems: "center"}}>
+            <Text style={{ color: "#3C3C43", fontWeight: "500", fontSize: 16 }}>
+              {textDaftar}
+            </Text>
+            <Text
+              style={{
+                marginTop: 8,
+                textAlign: "center",
+                maxWidth: 300,
+                color: "#3C3C43",
+                fontSize: 13,
+                fontWeight: "400",
+              }}
+            >
+              {textDesc}
+            </Text>
+            <Image
+              source={require("../assets/signup.png")}
+              style={{ marginTop: 48 }}
+            />
 
-          <View style={{ marginTop: 24 }}>
-            <InputTextAuth plch="Email" secure={false} />
-            <InputTextAuth plch="Password" secure={true} />
-            <InputTextAuth plch="Confirmation password" secure={true} />
+            <View style={{ marginTop: 24 }}>
+              <InputTextAuth plch="Email" secure={false} />
+              <InputTextAuth plch="Password" secure={true} />
+              <InputTextAuth plch="Confirmation password" secure={true} />
 
-            <CustomBtnAuth txt="Sign up" />
+              <CustomBtnAuth txt="Sign up" />
+            </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  AndroidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24
+  },
   container: {
     flex: 1,
     alignItems: 'center',

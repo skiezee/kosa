@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, SafeAreaView, StyleSheet, useColorScheme, ScrollView } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, useColorScheme, ScrollView, StatusBar, Platform } from "react-native";
 import CardMateri from "../components/CardMateri";
 import CardHome from "../components/cardHome";
 import InputSearch from "../components/SearchInput";
@@ -16,7 +16,8 @@ export default function MateriScreen({navigation}){
     const desc2= 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .'
 
     return(
-        <SafeAreaView style={[styles.container, themeContainerStyle]}>
+      <View style={[styles.container, themeContainerStyle]}>
+        <SafeAreaView style={styles.AndroidSafeArea}>
             <ScrollView style={{margin: 24}} showsVerticalScrollIndicator={false}>
               {/* bagian atas teks dan icon notif */}
               <View style={styles.topPart}>                
@@ -46,9 +47,13 @@ export default function MateriScreen({navigation}){
               {/* daftar materi */}
             </ScrollView>
         </SafeAreaView>
+        </View>
     )
 }
 const styles = StyleSheet.create({
+  AndroidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24
+  },
     container: {
       flex: 1,
     },

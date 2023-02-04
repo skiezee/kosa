@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, useColorScheme} from 'react-native';
+import { StyleSheet, Text, View, Image, useColorScheme, SafeAreaView, Platform, StatusBar} from 'react-native';
 import InputTextAuth from '../components/InputTextAuth';
 import CustomBtnAuth from '../components/ButtonAuth';
 import ButtonAppleAuth from '../components/ButtonApple';
@@ -17,32 +16,37 @@ export default function LoginScreen({navigation}) {
     const textDaftar = 'Yuk, daftar di KOSA. Gratis!'
 
     return (
-      <View style={[styles.container, themeContainerStyle]}>
-      <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white'}}>
-        <View style={{ flex: 1, alignItems: 'center', marginTop: 64}}>
-            <Text style={styles.textdaftar}>{textDaftar}</Text>
-            <Text style={styles.textdesc}>{textDesc}</Text>
-            <Image source={require('../assets/login.png')} style={{marginTop: 48}}/>
+      <View style={[styles.container, themeContainerStyle, ]}>
+      <SafeAreaView style={styles.AndroidSafeArea}>
+        <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white', margin: 24}}>
+          <View style={{ flex: 1, alignItems: 'center',}}>
+              <Text style={styles.textdaftar}>{textDaftar}</Text>
+              <Text style={styles.textdesc}>{textDesc}</Text>
+              <Image source={require('../assets/login.png')} style={{marginTop: 48}}/>
 
-            <View style={{marginTop:24}}>
-                <InputTextAuth plch="Masukan email" secure={false}/>
-                <InputTextAuth plch="Password" secure={true}/>
+              <View style={{marginTop:24}}>
+                  <InputTextAuth plch="Masukan email" secure={false}/>
+                  <InputTextAuth plch="Password" secure={true}/>
 
-                <CustomBtnAuth nav={()=> navigation.navigate('Dashboard')} txt= "Sign in"/>
-                
-                <Text style={styles.textacc}>Don't have an account yet?</Text>
+                  <CustomBtnAuth nav={()=> navigation.navigate('Dashboard')} txt= "Sign in"/>
+                  
+                  <Text style={styles.textacc}>Don't have an account yet?</Text>
 
-                <ButtonGoogleAuth/>
-                <ButtonAppleAuth/>
-            </View>
+                  <ButtonGoogleAuth/>
+                  <ButtonAppleAuth/>
+              </View>
 
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
       </View>
     );
 }
 
 const styles = StyleSheet.create({
+  AndroidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24
+  },
   textdaftar: {
     color: '#3C3C43', 
     fontWeight: '500', 

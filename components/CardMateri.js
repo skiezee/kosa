@@ -11,7 +11,7 @@ export default function CardMateri(props){
                 </View>
                 <View style={{marginLeft: 16}}>
                     <Text style={{fontSize: 16, fontWeight: '500', color:'#131313'}}>{props.title}</Text>
-                    <Text style={{maxWidth: 280, marginTop: 2, fontWeight: '400', fontSize: 12, color:'#A5A5A5'}}>{props.desc}</Text>
+                    <Text numberOfLines={4} style={{maxWidth: 270, marginTop: 2, fontWeight: '400', fontSize: 12, color:'#A5A5A5', flex: 1,}}>{props.desc}</Text>
                     <View style={{flexDirection: 'row'}}>
                         {/* materi */}
                         <View style={{flexDirection:'row', borderColor:'#F3F3F3', borderWidth: 1.5, borderRadius: 10, marginTop: 12, flex:0.35}}>

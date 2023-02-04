@@ -1,6 +1,6 @@
 // import axios from "axios";
 import React from "react";
-import { View, Text, ScrollView, ImageBackground, Image, Dimensions, StyleSheet, SafeAreaView,  useColorScheme } from 'react-native';
+import { View, Text, ScrollView, Dimensions, StyleSheet, SafeAreaView, useColorScheme, StatusBar, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import InputSearch from "../components/SearchInput";
 import CardMateri from "../components/CardMateri";
@@ -32,7 +32,8 @@ export default function DashboardScreen({navigation}){
   const desc2= 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .'
 
     return(
-        <SafeAreaView style={[styles.container, themeContainerStyle]}>
+      <View style={[styles.container, themeContainerStyle]}>
+        <SafeAreaView style={styles.AndroidSafeArea}>
             <ScrollView style={{margin: 24}} showsVerticalScrollIndicator={false}>
               {/* bagian atas teks dan icon notif */}
               <View style={styles.topPart}>
@@ -64,7 +65,7 @@ export default function DashboardScreen({navigation}){
               {/* materi teks prosedur */}
               <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 24}}>
                 <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Jelajah Popular</Text>
-                <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 6}} onPress={() => navigation.navigate('Materi')}>Lainnya</Text>
+                <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 2}} onPress={() => navigation.navigate('Materi')}>Lainnya</Text>
               </View>
               <View>
                 <CardMateri title="Pengenalan Teks Prosedur" desc={desc} materi="1 Materi" jumlah="+ 500 Partisipan"/>
@@ -74,10 +75,14 @@ export default function DashboardScreen({navigation}){
                {/* materi teks prosedur */}
             </ScrollView>
         </SafeAreaView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
+  AndroidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24
+  },
     container: {
       flex: 1,
     },
@@ -86,12 +91,6 @@ const styles = StyleSheet.create({
     },
     darkContainer: {
       backgroundColor: '#FFFFFF',
-    },
-    lightThemeText: {
-      color: '#FFFFFF',
-    },
-    darkThemeText: {
-      color: '#FFFFFF',
     },
     topPart: {
       flexDirection: 'row',

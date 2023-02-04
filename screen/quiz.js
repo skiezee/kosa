@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, SafeAreaView, useColorScheme, ScrollView, StyleSheet } from "react-native";
+import { View, Text, SafeAreaView, useColorScheme, ScrollView, StyleSheet, Platform, StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CardHome from "../components/cardHome";
 import InputSearch from "../components/SearchInput";
 import CardQuiz from "../components/CardQuiz";
 
-export default function QuizScreen(){
+export default function QuizScreen({navigation}){
 
     const colorScheme = useColorScheme();
 
@@ -13,7 +13,8 @@ export default function QuizScreen(){
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
     return(
-        <SafeAreaView style={[styles.container, themeContainerStyle]}>
+      <View style={[styles.container, themeContainerStyle]}>
+        <SafeAreaView style={styles.AndroidSafeArea}>
             <ScrollView style={{margin: 24}} showsVerticalScrollIndicator={false}>
               {/* bagian atas teks dan icon notif */}
               <View style={styles.topPart}>
@@ -34,7 +35,7 @@ export default function QuizScreen(){
               {/* materi teks prosedur */}
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 24}}>
                     <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Quiz Teks Prosedur</Text>
-                    <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 6}} onPress={() => navigation.navigate('Materi')}>Lainnya</Text>
+                    <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 2}}>Lainnya</Text>
                 </View>
                 <CardQuiz title="Quiz 1 Teks Prosedur" desc="Pengenalan Teks Prosedur" soal="10 Soal" type="Mudah" time="20 Menit"/>
                 <CardQuiz title="Quiz 2 Teks Prosedur" desc="Ciri & Struktur Teks Prosedur" soal="10 Soal" type="Sedang" time="20 Menit"/>
@@ -43,9 +44,13 @@ export default function QuizScreen(){
                {/* materi teks prosedur */}
             </ScrollView>
         </SafeAreaView>
+      </View>
     )
 }
 const styles = StyleSheet.create({
+  AndroidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24
+  },
     container: {
       flex: 1,
     },

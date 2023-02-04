@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Image, Text, TouchableOpacity, StyleSheet, useColorScheme} from "react-native";
-import { StatusBar } from 'expo-status-bar';
+import { View, Image, Text, TouchableOpacity, StyleSheet, useColorScheme, SafeAreaView} from "react-native";
+
 
 export default function OnboardingScreen({navigation}){
 
@@ -14,22 +14,23 @@ export default function OnboardingScreen({navigation}){
 
     return(
         <View style={[styles.container, themeContainerStyle]}>
-        <StatusBar />
+    
+        <SafeAreaView>
+            <View style={{alignItems: 'center', justifyContent: 'center', flex: 1, backgroundColor: '#FFFF', margin: 24}}>
+                <Image source={require('../assets/onboarding.png')}/>
+                <Text style={styles.welcome}>{textWelcome}</Text>
+                <Text style={styles.desc}>{textDesc}</Text>
 
-        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1, backgroundColor: '#FFFF'}}>
-            <Image source={require('../assets/onboarding.png')}/>
-            <Text style={styles.welcome}>{textWelcome}</Text>
-            <Text style={styles.desc}>{textDesc}</Text>
-
-            <View style={{marginTop: 40, alignItems: 'center'}}>
-                <TouchableOpacity style={styles.btnsignin} onPress={() => navigation.navigate('Login')}>
-                    <Text style={styles.textsignin}>Sign in</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnsignup} onPress={() => navigation.navigate('Register')}>
-                    <Text style={styles.textsignup}>Sign up</Text>
-                </TouchableOpacity>
+                <View style={{marginTop: 40, alignItems: 'center'}}>
+                    <TouchableOpacity style={styles.btnsignin} onPress={() => navigation.navigate('Login')}>
+                        <Text style={styles.textsignin}>Sign in</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btnsignup} onPress={() => navigation.navigate('Register')}>
+                        <Text style={styles.textsignup}>Sign up</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
+        </SafeAreaView>
         </View>
     )
 }
