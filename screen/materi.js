@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from 'react';
 import { View, Text, SafeAreaView, StyleSheet, useColorScheme, ScrollView, StatusBar, Platform } from "react-native";
 import CardMateri from "../components/CardMateri";
 import CardHome from "../components/cardHome";
@@ -11,9 +11,27 @@ export default function MateriScreen({navigation}){
     const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
-    const desc= 'Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .'
-    const desc1= 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .'
-    const desc2= 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .'
+    const [state, setState] = useState({
+      search: '',
+    });
+  
+    filterList = (list) => {
+      return list.filter(
+        (listItem) =>
+          listItem.title
+            .toLowerCase()
+            .includes(state.search.toLowerCase())
+      )
+    }
+
+    const list = [
+      {title: 'Pengenalan Teks Prosedur', desc: 'Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi'},
+      {title: 'Ciri & Struktur Teks Prosedur', desc: 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .', materi: '2 Materi', jumlah: '+ 750 Partisipasi'},
+      {title: 'Kebahasaan Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 400 Partisipasi'},
+      {title: 'Membuat Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 600 Partisipasi'},
+      {title: 'Contoh Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi'},
+      
+    ];
 
     return(
       <View style={[styles.container, themeContainerStyle]}>
@@ -30,7 +48,7 @@ export default function MateriScreen({navigation}){
 
               {/* import component card quiz dan search */}
               <CardHome next="Selengkapnya" name="arrowright" press={() => navigation.navigate('Quiz')}/>
-              <InputSearch/>              
+              <InputSearch onChangeText={(search) => setState({search})} plch="Cari materi kuy!"/>              
               {/* import component card quiz dan search */}
 
               {/* daftar materi */}
@@ -38,11 +56,9 @@ export default function MateriScreen({navigation}){
                 <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Materi</Text>              
               </View>
               <View>
-                <CardMateri title="Pengenalan Teks Prosedur" desc={desc} materi="1 Materi" jumlah="+ 500 Partisipan"/>
-                <CardMateri title="Ciri & Struktur Teks Prosedur" desc={desc1} materi="2 Materi" jumlah="+ 750 Partisipan"/>
-                <CardMateri title="Kebahasaan Teks Prosedur" desc={desc2} materi="1 Materi" jumlah="+ 400 Partisipan"/>
-                <CardMateri title="Membuat Teks Prosedur" desc={desc2} materi="1 Materi" jumlah="+ 600 Partisipan"/>
-                <CardMateri title="Contoh Teks Prosedur" desc={desc2} materi="1 Materi" jumlah="+ 500 Partisipan"/>
+              {filterList(list).map((listItem, index) => (
+                <CardMateri key={index} title={listItem.title} desc={listItem.desc} materi={listItem.materi} jumlah={listItem.jumlah} />
+              ))}
               </View>
               {/* daftar materi */}
             </ScrollView>

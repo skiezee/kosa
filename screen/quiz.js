@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from 'react';
 import { View, Text, SafeAreaView, useColorScheme, ScrollView, StyleSheet, Platform, StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CardHome from "../components/cardHome";
@@ -11,6 +11,27 @@ export default function QuizScreen({navigation}){
 
     const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+
+    const [state, setState] = useState({
+      search: '',
+    });
+  
+    filterList = (list) => {
+      return list.filter(
+        (listItem) =>
+          listItem.title
+            .toLowerCase()
+            .includes(state.search.toLowerCase())
+      )
+    }
+
+    const list = [
+      {title: 'Quiz 1 Teks Prosedur', desc: 'Pengenalan Teks Prosedur', soal: '10 Soal', type: 'Mudah', time: '20 Menit'},
+      {title: 'Quiz 2 Teks Prosedur', desc: 'Ciri & Struktur Teks Prosedur', soal: '10 Soal', type: 'Sedang', time: '20 Menit'},
+      {title: 'Quiz 3 Teks Prosedur', desc: 'Kebahasaan Teks Prosedur', soal: '10 Soal', type: 'Susah', time: '20 Menit'},
+      {title: 'Quiz 4 Teks Prosedur', desc: 'Membuat Teks Prosedur', soal: '10 Soal', type: 'Sedang', time: '20 Menit'},
+      
+    ];
 
     return(
       <View style={[styles.container, themeContainerStyle]}>
@@ -27,7 +48,7 @@ export default function QuizScreen({navigation}){
 
               {/* import component card quiz dan search */}
               <CardHome press={() => navigation.navigate('Quiz')}/>
-              <InputSearch/>
+              <InputSearch onChangeText={(search) => setState({search})} plch="Cari quiz kuy!"/>
               {/* import component card quiz dan search */}
 
               
@@ -37,10 +58,9 @@ export default function QuizScreen({navigation}){
                     <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Quiz Teks Prosedur</Text>
                     <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 2}}>Lainnya</Text>
                 </View>
-                <CardQuiz title="Quiz 1 Teks Prosedur" desc="Pengenalan Teks Prosedur" soal="10 Soal" type="Mudah" time="20 Menit"/>
-                <CardQuiz title="Quiz 2 Teks Prosedur" desc="Ciri & Struktur Teks Prosedur" soal="10 Soal" type="Sedang" time="20 Menit"/>
-                <CardQuiz title="Quiz 3 Teks Prosedur" desc="Kebahasaan Teks Prosedur" soal="10 Soal" type="Susah" time="20 Menit"/>
-                <CardQuiz title="Quiz 4 Teks Prosedur" desc="Membuat Teks Prosedur" soal="10 Soal" type="Sedang" time="20 Menit"/>
+                {filterList(list).map((listItem, index) => (
+                <CardQuiz key={index} title={listItem.title} desc={listItem.desc} soal={listItem.soal} type={listItem.type} time={listItem.time}/>
+                 ))}
                {/* materi teks prosedur */}
             </ScrollView>
         </SafeAreaView>
