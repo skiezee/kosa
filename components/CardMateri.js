@@ -6,7 +6,7 @@ import { Ionicons, Foundation } from '@expo/vector-icons';
 class CardMateri extends Component {
   render() {
     return (
-        <TouchableOpacity style={{marginTop: 16}} >
+        <TouchableOpacity style={{marginTop: 16}} onPress={this.props.nav} >
             <View style={styles.container}>
                 <View style={{width: 40, height: 40, borderRadius: 12, backgroundColor:'#5970E714', alignItems:'center', justifyContent:'center'}}>
                     <Ionicons name="book-sharp" size={22} color="#5970E7"/>

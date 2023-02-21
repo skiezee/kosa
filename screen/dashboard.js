@@ -1,11 +1,21 @@
 // import axios from "axios";
 import React, {useState, useEffect} from "react";
-import { View, Text, ScrollView, Dimensions, StyleSheet, SafeAreaView, useColorScheme, StatusBar, Platform } from 'react-native';
+import { 
+  View,
+  Text, 
+  ScrollView, 
+  Dimensions, 
+  StyleSheet, 
+  SafeAreaView, 
+  useColorScheme, 
+  StatusBar, 
+  Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import InputSearch from "../components/SearchInput";
 import CardMateri from "../components/CardMateri";
 import CardHome from "../components/cardHome";
 import ListMateri from "../components/ListMateri";
+import { setStatusBarBackgroundColor } from "expo-status-bar";
 // const getData = async() => {
 //     try {
 //         const res = await axios.get('link api', {
@@ -41,9 +51,9 @@ export default function DashboardScreen({navigation}){
   }
 
   const list = [
-    {title: 'Pengenalan Teks Prosedur', desc: 'Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi'},
-    {title: 'Ciri & Struktur Teks Prosedur', desc: 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .', materi: '2 Materi', jumlah: '+ 750 Partisipasi'},
-    {title: 'Kebahasaan Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 400 Partisipasi'},
+    {title: 'Pengenalan Teks Prosedur', desc: 'Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi', navigasi:"Pengenalan"},
+    {title: 'Ciri & Struktur Teks Prosedur', desc: 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .', materi: '2 Materi', jumlah: '+ 750 Partisipasi',navigasi:"Quiz"},
+    {title: 'Kebahasaan Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 400 Partisipasi',navigasi:"Login"},
     
   ];
 
@@ -57,7 +67,7 @@ export default function DashboardScreen({navigation}){
                   <Text style={{color: '#131313', fontSize: 24, fontWeight: '500'}}>Teks Prosedur</Text>
                   <Text style={{color: '#A5A5A5', marginTop: 8}}>Mengenal Teks Prosedur</Text>
                 </View>
-                <Ionicons name="notifications-outline" size={24} color="black" style={{backgroundColor: 'white', borderColor: '#F3F3F3'}} />
+                <Ionicons name="notifications-outline" size={24} color="black" />
               </View>
               {/* bagian atas teks dan icon notif */}
 
@@ -71,7 +81,7 @@ export default function DashboardScreen({navigation}){
                   <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}}>Teks Prosedur</Text>
                   <ScrollView style={{flexDirection: 'row', marginTop: 16,}}  horizontal={true} showsHorizontalScrollIndicator={false}>
                     <ListMateri text="Materi" press={() => navigation.navigate('Materi')}/>
-                    <ListMateri text="Kuis" style={{marginLeft: 12}} press={() => navigation.navigate('Quiz')}/>
+                    <ListMateri text="Kuis" style={{marginLeft: 12,}} press={() => navigation.navigate('Quiz')}/>
                     <ListMateri text="Pembahasan" style={{marginLeft: 12}}/>
                     <ListMateri text="Hasil Belajar" style={{marginLeft: 12}}/>
                   </ScrollView>
@@ -85,7 +95,7 @@ export default function DashboardScreen({navigation}){
               </View>
               <View>
                 {filterList(list).map((listItem, index) => (
-                  <CardMateri key={index} title={listItem.title} desc={listItem.desc} materi={listItem.materi} jumlah={listItem.jumlah} />
+                  <CardMateri key={index} title={listItem.title} desc={listItem.desc} materi={listItem.materi} jumlah={listItem.jumlah} nav={() => navigation.navigate(listItem.navigasi)}/>
                 ))}
               </View>
                {/* materi teks prosedur */}
@@ -97,7 +107,8 @@ export default function DashboardScreen({navigation}){
 
 const styles = StyleSheet.create({
   AndroidSafeArea: {
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 24,
+    backgroundColor: '#FFFFFF'
   },
     container: {
       flex: 1,

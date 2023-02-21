@@ -1,6 +1,17 @@
 import React from "react";
-import { View, Text, SafeAreaView, useColorScheme, StyleSheet, Platform, StatusBar} from "react-native";
+import { 
+  View, 
+  Text, 
+  SafeAreaView, 
+  useColorScheme, 
+  StyleSheet, 
+  Platform, 
+  StatusBar,
+  TouchableHighlight
+} from "react-native";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
+
+
 
 export default function AccScreen(){
 
@@ -9,11 +20,15 @@ export default function AccScreen(){
     const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
     
+   
+
     return(
       <View style={[styles.container, themeContainerStyle]}>
         <SafeAreaView style={styles.AndroidSafeArea}>
             <View style={{margin: 24}}>
-                
+                <View style={{alignItems: 'center'}}>
+                  
+                </View>
             </View>
         </SafeAreaView>
       </View>
