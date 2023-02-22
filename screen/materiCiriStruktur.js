@@ -12,7 +12,7 @@ export default function CiriPage({navigation}){
     return(
         <View style={[styles.container, themeContainerStyle]}>
             <SafeAreaView style={styles.AndroidSafeArea}>
-                <CiriComponent titletwo="Pengertian Teks Prosedur" press={() => navigation.navigate('Materi')}/>
+                <CiriComponent press={() => navigation.navigate('Materi')}/>
             </SafeAreaView>
         </View>
     )
