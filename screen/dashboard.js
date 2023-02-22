@@ -52,7 +52,7 @@ export default function DashboardScreen({navigation}){
 
   const list = [
     {title: 'Pengenalan Teks Prosedur', desc: 'Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi', navigasi:"Pengenalan"},
-    {title: 'Ciri & Struktur Teks Prosedur', desc: 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .', materi: '2 Materi', jumlah: '+ 750 Partisipasi',navigasi:"Quiz"},
+    {title: 'Ciri & Struktur Teks Prosedur', desc: 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .', materi: '2 Materi', jumlah: '+ 750 Partisipasi',navigasi:"Ciri"},
     {title: 'Kebahasaan Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 400 Partisipasi',navigasi:"Login"},
     
   ];

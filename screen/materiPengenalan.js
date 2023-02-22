@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, SafeAreaView, StyleSheet, useColorScheme } from "react-native";
 import PengenalanComponent from "../components/PengenalanTeksProsedur";
 
-export default function PengenalanPage(){
+export default function PengenalanPage({navigation}){
 
     const colorScheme = useColorScheme();
 
@@ -12,7 +12,7 @@ export default function PengenalanPage(){
     return(
         <View style={[styles.container, themeContainerStyle]}>
             <SafeAreaView style={styles.AndroidSafeArea}>
-                <PengenalanComponent titletwo="Pengertian Teks Prosedur"/>
+                <PengenalanComponent titletwo="Pengertian Teks Prosedur" press={() => navigation.navigate('Materi')}/>
             </SafeAreaView>
         </View>
     )
