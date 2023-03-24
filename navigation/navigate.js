@@ -12,6 +12,9 @@ import QuizScreen from '../screen/quiz';
 import AccScreen from '../screen/account';
 import PengenalanPage from '../screen/materiPengenalan';
 import CiriPage from '../screen/materiCiriStruktur';
+import KebahasaanPage from '../screen/materiKebahasaan';
+import MembuatPage from '../screen/materiMembuatTeksProsedur';
+import ContohPage from '../screen/contohTeksProsedur';
 import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +34,9 @@ export default function Nav() {
         <Stack.Screen name="Account" component={Tab1} options={{ headerShown: false }}/>
         <Stack.Screen name="Pengenalan" component={PengenalanPage} options={{ headerShown: false }}/>
         <Stack.Screen name="Ciri" component={CiriPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="Kebahasaan" component={KebahasaanPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="Membuat" component={MembuatPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="Contoh" component={ContohPage} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

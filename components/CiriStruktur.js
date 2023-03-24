@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, SafeAreaView, StyleSheet, useColorScheme, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -19,6 +19,7 @@ export default function CiriComponent(props){
                     <Ionicons name="notifications-outline" size={24} color="black" />
                   </TouchableOpacity>
                 </View>
+
                 <ScrollView showsVerticalScrollIndicator={false} style={{marginTop: 24}}>
                   <View style={{marginBottom: 128}}>
                     <Text style={{color: '#131313', fontSize: 16, fontWeight: '600', marginTop: 24}}>Ciri - ciri Teks Prosedur</Text>

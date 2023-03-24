@@ -25,46 +25,108 @@ export default function MateriScreen({navigation}){
     }
 
     const list = [
-      {title: 'Pengenalan Teks Prosedur', desc: 'Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi'},
-      {title: 'Ciri & Struktur Teks Prosedur', desc: 'Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .', materi: '2 Materi', jumlah: '+ 750 Partisipasi'},
-      {title: 'Kebahasaan Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 400 Partisipasi'},
-      {title: 'Membuat Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 600 Partisipasi'},
-      {title: 'Contoh Teks Prosedur', desc: 'Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .', materi: '1 Materi', jumlah: '+ 500 Partisipasi'},
-      
+      {
+        title: "Pengenalan Teks Prosedur",
+        desc: "Secara umum, pengertian teks prosedur adalah langkah-langkah suatu aktivitas atau . . .",
+        materi: "1 Materi",
+        jumlah: "+ 500 Partisipasi",
+        navigasi: "Pengenalan",
+      },
+      {
+        title: "Ciri & Struktur Teks Prosedur",
+        desc: "Sama halnya dengan teks yang lain, teks prosedur memiliki beberapa ciri dan juga . . .",
+        materi: "2 Materi",
+        jumlah: "+ 750 Partisipasi",
+        navigasi: "Ciri",
+      },
+      {
+        title: "Kebahasaan Teks Prosedur",
+        desc: "Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .",
+        materi: "1 Materi",
+        jumlah: "+ 400 Partisipasi",
+        navigasi: "Kebahasaan",
+      },
+      {
+        title: "Membuat Teks Prosedur",
+        desc: "Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .",
+        materi: "1 Materi",
+        jumlah: "+ 600 Partisipasi",
+        navigasi: "Membuat",
+      },
+      {
+        title: "Contoh Teks Prosedur",
+        desc: "Untuk menyusun sebuah teks prosedur, diperlukan kaidah kebahasaan yang tepat . . .",
+        materi: "1 Materi",
+        jumlah: "+ 500 Partisipasi",
+        navigasi: "Contoh",
+      },
     ];
 
-    return(
+    return (
       <View style={[styles.container, themeContainerStyle]}>
         <SafeAreaView style={styles.AndroidSafeArea}>
-            <ScrollView style={{margin: 24}} showsVerticalScrollIndicator={false}>
-              {/* bagian atas teks dan icon notif */}
-              <View style={styles.topPart}>                
-                <View>
-                  <Text style={{color: '#131313', fontSize: 24, fontWeight: '500'}}>Teks Prosedur</Text>
-                  <Text style={{color: '#A5A5A5', marginTop: 8}}>Mengenal Teks Prosedur</Text>
-                </View>                
-              </View>
-              {/* bagian atas teks dan icon notif */}
-
-              {/* import component card quiz dan search */}
-              <CardHome next="Selengkapnya" name="arrowright" press={() => navigation.navigate('Quiz')}/>
-              <InputSearch onChangeText={(search) => setState({search})} plch="Cari materi kuy!"/>              
-              {/* import component card quiz dan search */}
-
-              {/* daftar materi */}
-              <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 24}}>
-                <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Materi</Text>              
-              </View>
+          <ScrollView
+            style={{ margin: 24 }}
+            showsVerticalScrollIndicator={false}
+          >
+            {/* bagian atas teks dan icon notif */}
+            <View style={styles.topPart}>
               <View>
-              {filterList(list).map((listItem, index) => (
-                <CardMateri key={index} title={listItem.title} desc={listItem.desc} materi={listItem.materi} jumlah={listItem.jumlah} />
-              ))}
+                <Text
+                  style={{ color: "#131313", fontSize: 24, fontWeight: "500" }}
+                >
+                  Teks Prosedur
+                </Text>
+                <Text style={{ color: "#A5A5A5", marginTop: 8 }}>
+                  Mengenal Teks Prosedur
+                </Text>
               </View>
-              {/* daftar materi */}
-            </ScrollView>
+            </View>
+            {/* bagian atas teks dan icon notif */}
+
+            {/* import component card quiz dan search */}
+            <CardHome
+              next="Selengkapnya"
+              name="arrowright"
+              press={() => navigation.navigate("Quiz")}
+            />
+            <InputSearch
+              onChangeText={(search) => setState({ search })}
+              plch="Cari materi kuy!"
+            />
+            {/* import component card quiz dan search */}
+
+            {/* daftar materi */}
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 24,
+              }}
+            >
+              <Text
+                style={{ color: "#131313", fontSize: 18, fontWeight: "500" }}
+              >
+                Materi
+              </Text>
+            </View>
+            <View>
+              {filterList(list).map((listItem, index) => (
+                <CardMateri
+                  key={index}
+                  title={listItem.title}
+                  desc={listItem.desc}
+                  materi={listItem.materi}
+                  jumlah={listItem.jumlah}
+                  nav={() => navigation.navigate(listItem.navigasi)}
+                />
+              ))}
+            </View>
+            {/* daftar materi */}
+          </ScrollView>
         </SafeAreaView>
-        </View>
-    )
+      </View>
+    );
 }
 const styles = StyleSheet.create({
   AndroidSafeArea: {
