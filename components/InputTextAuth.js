@@ -19,6 +19,8 @@ export default function InputTextAuth(props){
                 }}
                 placeholder= {props.plch}
                 placeholderTextColor = "#3F72AF4D" 
+                value={props.value}
+                onChangeText={props.onChangeText}
             />
          </View>
     ) 

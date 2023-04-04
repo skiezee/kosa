@@ -15,18 +15,6 @@ import InputSearch from "../components/SearchInput";
 import CardMateri from "../components/CardMateri";
 import CardHome from "../components/cardHome";
 import ListMateri from "../components/ListMateri";
-import { setStatusBarBackgroundColor } from "expo-status-bar";
-// const getData = async() => {
-//     try {
-//         const res = await axios.get('link api', {
-//             params: {
-
-//             }
-//         })
-//     } catch (error) {
-//         alert(error.message)
-//     }
-// }
 
 const {width, height} = Dimensions.get('window')
 

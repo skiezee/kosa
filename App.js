@@ -1,9 +1,11 @@
 import Nav from './navigation/navigate';
-
+import AuthProvider from './screen/context/AuthContext';
 
 export default function App() {
   return (
-    <Nav/>    
+    <AuthProvider>
+      <Nav/>    
+    </AuthProvider>
   );
 }
 
