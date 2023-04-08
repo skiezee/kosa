@@ -68,6 +68,7 @@ export default function LoginScreen({ navigation }) {
     <View style={[styles.container, themeContainerStyle]}>
       <Spinner visible={isLoading} />
       <SafeAreaView style={styles.AndroidSafeArea}>
+        <StatusBar backgroundColor="#131313" barStyle="dark-content" />
         <View
           style={{
             flex: 1,

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet, useColorScheme } from "react-native";
+import { View, SafeAreaView, StyleSheet, useColorScheme, StatusBar } from "react-native";
 import ContohTeksProsedurComponent from "../components/ContohTeksProsedur";
 
 export default function ContohPage({ navigation }) {
@@ -11,7 +11,10 @@ export default function ContohPage({ navigation }) {
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <SafeAreaView style={styles.AndroidSafeArea}>
-        <ContohTeksProsedurComponent press={() => navigation.navigate("Materi")} />
+        <StatusBar backgroundColor="#131313" barStyle="dark-content" />
+        <ContohTeksProsedurComponent
+          press={() => navigation.navigate("Materi")}
+        />
       </SafeAreaView>
     </View>
   );

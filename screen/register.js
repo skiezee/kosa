@@ -16,9 +16,14 @@ export default function RegisterScreen({ navigation }) {
     "Akses materi, latihan soal, dan beragam fitur menarik lainnya sekarang";
   const textDaftar = "Yuk, daftar di KOSA. Gratis!";
 
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isLoading, register } = useContext(AuthContext);
+
+  const handleUsernameChange = (text) => {
+    setUsername(text);
+  };
 
   const handleEmailChange = (text) => {
     setEmail(text);
@@ -32,6 +37,7 @@ export default function RegisterScreen({ navigation }) {
     <View style={[styles.container, themeContainerStyle]}>
       <Spinner visible={isLoading} />
       <SafeAreaView style={styles.AndroidSafeArea}>
+        <StatusBar backgroundColor="#131313" barStyle="dark-content" />
         <View
           style={{
             flex: 1,
@@ -63,7 +69,13 @@ export default function RegisterScreen({ navigation }) {
 
             <View style={{ marginTop: 24 }}>
               <InputTextAuth
-                plch="Masukan email"
+                plch="Username"
+                secure={false}
+                value={username}
+                onChangeText={handleUsernameChange}
+              />
+              <InputTextAuth
+                plch="Email"
                 secure={false}
                 value={email}
                 onChangeText={handleEmailChange}
@@ -78,7 +90,7 @@ export default function RegisterScreen({ navigation }) {
               <CustomBtnAuth
                 txt="Sign up"
                 nav={() => {
-                  register(email, password);
+                  register(username, email, password);
                 }}
               />
               <View style={{ flexDirection: "row", marginTop: 8 }}>

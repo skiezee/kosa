@@ -14,6 +14,8 @@ import CiriPage from "../screen/materiCiriStruktur";
 import KebahasaanPage from "../screen/materiKebahasaan";
 import MembuatPage from "../screen/materiMembuatTeksProsedur";
 import ContohPage from "../screen/contohTeksProsedur";
+import QuizPengenalanTeksProsedur from "../screen/quizPengenalanTeksProsedur";
+import ReviewScreen from "../screen/review";
 import { Ionicons } from "@expo/vector-icons";
 import { AuthContext } from "../screen/context/AuthContext";
 
@@ -83,6 +85,16 @@ export default function Nav() {
         <Stack.Screen
           name="Contoh"
           component={ContohPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="QuizPengenalan"
+          component={QuizPengenalanTeksProsedur}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Review"
+          component={ReviewScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

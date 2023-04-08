@@ -69,6 +69,7 @@ export default function MateriScreen({navigation}){
             style={{ margin: 24 }}
             showsVerticalScrollIndicator={false}
           >
+            <StatusBar backgroundColor="#131313" barStyle="dark-content" />
             {/* bagian atas teks dan icon notif */}
             <View style={styles.topPart}>
               <View>

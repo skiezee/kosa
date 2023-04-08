@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet, useColorScheme } from "react-native";
+import { View, SafeAreaView, StyleSheet, useColorScheme, StatusBar } from "react-native";
 import MembuatTeksProsedurComponent from "../components/MembuatTeksProsedur";
 
 export default function MembuatPage({ navigation }) {
@@ -11,7 +11,10 @@ export default function MembuatPage({ navigation }) {
   return (
     <View style={[styles.container, themeContainerStyle]}>
       <SafeAreaView style={styles.AndroidSafeArea}>
-        <MembuatTeksProsedurComponent press={() => navigation.navigate("Materi")} />
+        <StatusBar backgroundColor="#131313" barStyle="dark-content" />
+        <MembuatTeksProsedurComponent
+          press={() => navigation.navigate("Materi")}
+        />
       </SafeAreaView>
     </View>
   );

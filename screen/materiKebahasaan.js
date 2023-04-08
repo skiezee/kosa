@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet, useColorScheme } from "react-native";
+import { View, SafeAreaView, StyleSheet, useColorScheme, StatusBar } from "react-native";
 import KebahasaanComponent from "../components/Kebahasaan";
 
 export default function KebahasaanPage({navigation}){
@@ -8,13 +8,14 @@ export default function KebahasaanPage({navigation}){
     const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
-    return(
-        <View style={[styles.container, themeContainerStyle]}>
-            <SafeAreaView style={styles.AndroidSafeArea}>
-              <KebahasaanComponent press={() => navigation.navigate('Materi')}/>
-            </SafeAreaView>
-        </View>
-    )
+    return (
+      <View style={[styles.container, themeContainerStyle]}>
+        <SafeAreaView style={styles.AndroidSafeArea}>
+          <StatusBar backgroundColor="#131313" barStyle="dark-content" />
+          <KebahasaanComponent press={() => navigation.navigate("Materi")} />
+        </SafeAreaView>
+      </View>
+    );
 }
 
 const styles = StyleSheet.create({

@@ -45,51 +45,110 @@ export default function DashboardScreen({navigation}){
     
   ];
 
-    return(
+    return (
       <View style={[styles.container, themeContainerStyle]}>
         <SafeAreaView style={styles.AndroidSafeArea}>
-            <ScrollView style={{margin: 24}} showsVerticalScrollIndicator={false}>
-              {/* bagian atas teks dan icon notif */}
-              <View style={styles.topPart}>
-                <View>
-                  <Text style={{color: '#131313', fontSize: 24, fontWeight: '500'}}>Teks Prosedur</Text>
-                  <Text style={{color: '#A5A5A5', marginTop: 8}}>Mengenal Teks Prosedur</Text>
-                </View>
-                <Ionicons name="notifications-outline" size={24} color="black" />
-              </View>
-              {/* bagian atas teks dan icon notif */}
-
-              {/* import component card quiz dan search */}
-              <CardHome next="Selengkapnya" name="arrowright" press={() => navigation.navigate('Quiz')}/>
-              <InputSearch plch="Cari sesuatu" onChangeText={(search) => setState({search})}/>
-              {/* import component card quiz dan search */}
-
-              {/* list materi teks prosedur */}
-              <View style={{flexDirection: 'column', marginTop: 24}}>
-                  <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}}>Teks Prosedur</Text>
-                  <ScrollView style={{flexDirection: 'row', marginTop: 16,}}  horizontal={true} showsHorizontalScrollIndicator={false}>
-                    <ListMateri text="Materi" press={() => navigation.navigate('Materi')}/>
-                    <ListMateri text="Kuis" style={{marginLeft: 12,}} press={() => navigation.navigate('Quiz')}/>
-                    <ListMateri text="Pembahasan" style={{marginLeft: 12}}/>
-                    <ListMateri text="Hasil Belajar" style={{marginLeft: 12}}/>
-                  </ScrollView>
-              </View>
-              {/* list materi teks prosedur */}
-
-              {/* materi teks prosedur */}
-              <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 24}}>
-                <Text style={{color: '#131313', fontSize: 18, fontWeight: '500'}} >Jelajah Popular</Text>
-                <Text style={{color: '#5970E7', fontSize: 14, fontWeight: '600', marginTop: 2}} onPress={() => navigation.navigate('Materi')}>Lainnya</Text>
-              </View>
+          <StatusBar backgroundColor="#131313" barStyle="dark-content" />
+          <ScrollView
+            style={{ margin: 24 }}
+            showsVerticalScrollIndicator={false}
+          >
+            {/* bagian atas teks dan icon notif */}
+            <View style={styles.topPart}>
               <View>
-                {filterList(list).map((listItem, index) => (
-                  <CardMateri key={index} title={listItem.title} desc={listItem.desc} materi={listItem.materi} jumlah={listItem.jumlah} nav={() => navigation.navigate(listItem.navigasi)}/>
-                ))}
+                <Text
+                  style={{ color: "#131313", fontSize: 24, fontWeight: "500" }}
+                >
+                  Teks Prosedur
+                </Text>
+                <Text style={{ color: "#A5A5A5", marginTop: 8 }}>
+                  Mengenal Teks Prosedur
+                </Text>
               </View>
-               {/* materi teks prosedur */}
-            </ScrollView>
+              <Ionicons name="notifications-outline" size={24} color="black" />
+            </View>
+            {/* bagian atas teks dan icon notif */}
+
+            {/* import component card quiz dan search */}
+            <CardHome
+              next="Selengkapnya"
+              name="arrowright"
+              press={() => navigation.navigate("Quiz")}
+            />
+            <InputSearch
+              plch="Cari sesuatu"
+              onChangeText={(search) => setState({ search })}
+            />
+            {/* import component card quiz dan search */}
+
+            {/* list materi teks prosedur */}
+            <View style={{ flexDirection: "column", marginTop: 24 }}>
+              <Text
+                style={{ color: "#131313", fontSize: 18, fontWeight: "500" }}
+              >
+                Teks Prosedur
+              </Text>
+              <ScrollView
+                style={{ flexDirection: "row", marginTop: 16 }}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              >
+                <ListMateri
+                  text="Materi"
+                  press={() => navigation.navigate("Materi")}
+                />
+                <ListMateri
+                  text="Kuis"
+                  style={{ marginLeft: 12 }}
+                  press={() => navigation.navigate("Quiz")}
+                />
+                <ListMateri text="Pembahasan" style={{ marginLeft: 12 }} />
+                <ListMateri text="Hasil Belajar" style={{ marginLeft: 12 }} />
+              </ScrollView>
+            </View>
+            {/* list materi teks prosedur */}
+
+            {/* materi teks prosedur */}
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 24,
+              }}
+            >
+              <Text
+                style={{ color: "#131313", fontSize: 18, fontWeight: "500" }}
+              >
+                Jelajah Popular
+              </Text>
+              <Text
+                style={{
+                  color: "#5970E7",
+                  fontSize: 14,
+                  fontWeight: "600",
+                  marginTop: 2,
+                }}
+                onPress={() => navigation.navigate("Materi")}
+              >
+                Lainnya
+              </Text>
+            </View>
+            <View>
+              {filterList(list).map((listItem, index) => (
+                <CardMateri
+                  key={index}
+                  title={listItem.title}
+                  desc={listItem.desc}
+                  materi={listItem.materi}
+                  jumlah={listItem.jumlah}
+                  nav={() => navigation.navigate(listItem.navigasi)}
+                />
+              ))}
+            </View>
+            {/* materi teks prosedur */}
+          </ScrollView>
         </SafeAreaView>
-        </View>
+      </View>
     );
 }
 

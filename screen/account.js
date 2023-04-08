@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { 
   View, 
   Text, 
@@ -12,6 +12,9 @@ import {
 } from "react-native";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import IsiProfile from "../components/IsiProfile";
+import { AuthContext } from "./context/AuthContext";
+import Spinner from "react-native-loading-spinner-overlay";
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function AccScreen({ navigation }){
@@ -20,12 +23,15 @@ export default function AccScreen({ navigation }){
 
     const themeContainerStyle =
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+
+    const {userInfo, logout, isLoading} = useContext(AuthContext);
     
-   
 
     return (
       <View style={[styles.container, themeContainerStyle]}>
+        <Spinner visible={isLoading} />
         <SafeAreaView style={styles.AndroidSafeArea}>
+          <StatusBar backgroundColor="#131313" barStyle="dark-content" />
           <View style={{ margin: 24 }}>
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
@@ -96,7 +102,7 @@ export default function AccScreen({ navigation }){
                   marginTop: 16,
                 }}
               >
-                Nia Novela
+                {userInfo.data.user.username}
               </Text>
               <Text
                 style={{
@@ -109,9 +115,10 @@ export default function AccScreen({ navigation }){
               </Text>
             </View>
 
-            <View style={{flexDirection: 'col'}}>
-              <IsiProfile/>
+            <View style={{ flexDirection: "col" }}>
+              <IsiProfile />
             </View>
+            <Text style={{textAlign: 'center'}} onPress={logout}>Logout</Text>
           </View>
         </SafeAreaView>
       </View>

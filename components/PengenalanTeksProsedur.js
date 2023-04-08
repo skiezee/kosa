@@ -111,7 +111,7 @@ export default function PengenalanComponent(props){
                   marginTop: 8,
                 }}
               >
-                Secara umum, pengertian teks prosedur adalah langkah - - langkah
+                Secara umum, pengertian teks prosedur adalah langkah - langkah
                 suatu aktivitas atau kegiatan untuk menyelesaikan suatu
                 pekerjaan. Teks prosedur ini dibutuhkan sebagai panduan bagi
                 seseorang dalam membuat atau menyusun sesuatu.
