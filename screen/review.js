@@ -94,7 +94,7 @@ export default function ReviewScreen({ navigation, route }) {
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <Image source={require("../assets/scrore.png")} />
           </View>
-          <Text>{numero}</Text>
+          <Text>{numero * 10}</Text>
         </View>
       </SafeAreaView>
     </View>

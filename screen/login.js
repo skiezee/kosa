@@ -53,16 +53,6 @@ export default function LoginScreen({ navigation }) {
       });
   };
 
-  useFocusEffect(
-    React.useCallback(() => {
-      const onBackPress = () => {
-        return true;
-      };
-      BackHandler.addEventListener("hardwareBackPress", onBackPress);
-      return () =>
-      BackHandler.removeEventListener("hardwareBackPress", onBackPress);
-    }, [])
-  );
 
   return (
     <View style={[styles.container, themeContainerStyle]}>

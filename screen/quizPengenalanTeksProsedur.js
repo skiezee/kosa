@@ -68,7 +68,7 @@ export default function QuizPengenalanTeksProsedur({ navigation }) {
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
-        const response = await fetch("http://192.168.18.10:3000/quiz");
+        const response = await fetch("http://192.168.1.8:3000/quiz");
         const data = await response.json();
         setQuizData(data);
       } catch (error) {
@@ -80,7 +80,7 @@ export default function QuizPengenalanTeksProsedur({ navigation }) {
 
   const postMateri = async (answer) => {
     return await axios
-      .post(`http://192.168.18.10:3000/jobsheet/one`, {
+      .post(`http://192.168.1.8:3000/jobsheet/one`, {
         id: currentQuestion,
         answer: answer,
       })
@@ -102,7 +102,7 @@ export default function QuizPengenalanTeksProsedur({ navigation }) {
     }
   };
 
-  console.log(currentQuestion);
+  console.log(nilai);
 
   const value = quizData.quiz?.find((v) => v.id === Number(currentQuestion));
   // get quiz
@@ -235,7 +235,7 @@ export default function QuizPengenalanTeksProsedur({ navigation }) {
               onPress={() => {
                 currentQuestion == 10
                   ? navigation.navigate("Review", { numero: nilai })
-                  : setCurrentQuestion(currentQuestion + 1);
+                  : handleButton(selectedAnswer);
               }}
             >
               <Text

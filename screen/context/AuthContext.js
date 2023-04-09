@@ -2,13 +2,12 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const baseURL = "192.168.18.10:3000";
+const baseURL = "192.168.1.8:3000";
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [userInfo, setUserInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-   const [quizData, setQuizData] = useState([]);
 
   useEffect(() => {
     // Check if there is a user info in AsyncStorage when the component mounts
@@ -50,7 +49,7 @@ export default function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     setIsLoading(true);
-      console.log(email, password);
+    console.log(email, password);
 
     try {
       const res = await axios.post(`http://${baseURL}/auth/login`, {
@@ -89,23 +88,7 @@ export default function AuthProvider({ children }) {
     }
   };
 
-  // QUIZ
-  const getQuizData = async () => {
-    try {
-      const token = quizData.data?.token;
 
-      await axios.get("http://192.168.18.20:3000/quiz", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      setQuizData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  // QUIZ
 
   return (
     <AuthContext.Provider
@@ -115,7 +98,6 @@ export default function AuthProvider({ children }) {
         register,
         login,
         logout,
-        getQuizData,
       }}
     >
       {children}
